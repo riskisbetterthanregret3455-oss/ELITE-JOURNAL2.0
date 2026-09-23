@@ -2664,5 +2664,34 @@ async function init(){
 
 init();
 </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const loginTab = document.getElementById('loginTab');
+  const signupTab = document.getElementById('signupTab');
+  const nameWrap = document.getElementById('authNameWrap');
+  const submitBtn = document.getElementById('authSubmit');
+  const forgotBtn = document.getElementById('forgotBtn');
+
+  function changeAuthMode(mode) {
+    const signup = mode === 'signup';
+
+    loginTab.classList.toggle('active', !signup);
+    signupTab.classList.toggle('active', signup);
+    nameWrap.classList.toggle('auth-hidden', !signup);
+    submitBtn.textContent = signup ? 'Create account' : 'Login';
+    forgotBtn.classList.toggle('auth-hidden', signup);
+  }
+
+  signupTab.addEventListener('click', function (e) {
+    e.preventDefault();
+    changeAuthMode('signup');
+  });
+
+  loginTab.addEventListener('click', function (e) {
+    e.preventDefault();
+    changeAuthMode('login');
+  });
+});
+</script>
 </body>
 </html>
